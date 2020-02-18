@@ -6,10 +6,41 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1645086_kgkuxaqvaxe.css">
+    <title>app</title>
   </head>
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <script>
+      let timeoutId;
+        window.addEventListener('pageshow', function () {
+          refreshRem()
+        })
+        window.addEventListener('resize', function () {
+      
+          if(timeoutId){
+            clearTimeout(timeoutId);
+          }
+          timeoutId = setTimeout(function () {
+            refreshRem()
+          }, 300)
+        })
+      
+        function refreshRem() {
+        // 获取屏幕的宽度
+        let clientWidth = document.documentElement.clientWidth;
+          // 将屏幕宽度10等分
+          let fontValue = clientWidth / 10;
+      
+          // 设定单位rem值的大小
+          let rem = fontValue;
+      
+          // 设定body标签字体大小
+          document.body.style.fontSize = '12px';
+          // 设定html上fontsize的大小
+          document.documentElement.style.fontSize = rem + 'px';}
+    </script>
   </body>
 </html>
